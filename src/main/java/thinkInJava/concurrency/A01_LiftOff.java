@@ -1,14 +1,16 @@
 //: concurrency/LiftOff.java
 // Demonstration of the Runnable interface.
 
+
+
 package  thinkInJava.concurrency;
 
-public class LiftOff implements Runnable {
+public class A01_LiftOff implements Runnable {
   protected int countDown = 10; // Default
   private static int taskCount = 0;
   private final int id = taskCount++;
-  public LiftOff() {}
-  public LiftOff(int countDown) {
+  public A01_LiftOff() {}
+  public A01_LiftOff(int countDown) {
     this.countDown = countDown;
   }
   public String status() {
