@@ -1,12 +1,13 @@
+package thinkInJava.concurrency;
 //: concurrency/SingleThreadExecutor.java
 import java.util.concurrent.*;
 
-public class SingleThreadExecutor {
+public class A07_SingleThreadExecutor {
   public static void main(String[] args) {
     ExecutorService exec =
       Executors.newSingleThreadExecutor();
     for(int i = 0; i < 5; i++)
-      exec.execute(new LiftOff());
+      exec.execute(new A01_LiftOff());
     exec.shutdown();
   }
 } /* Output:

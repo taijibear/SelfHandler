@@ -5,11 +5,11 @@ import java.io.*;
 import static net.mindview.util.Print.*;
 
 class LiftOffRunner implements Runnable {
-  private BlockingQueue<LiftOff> rockets;
-  public LiftOffRunner(BlockingQueue<LiftOff> queue) {
+  private BlockingQueue<A01_LiftOff> rockets;
+  public LiftOffRunner(BlockingQueue<A01_LiftOff> queue) {
     rockets = queue;
   }
-  public void add(LiftOff lo) {
+  public void add(A01_LiftOff lo) {
     try {
       rockets.put(lo);
     } catch(InterruptedException e) {
@@ -19,7 +19,7 @@ class LiftOffRunner implements Runnable {
   public void run() {
     try {
       while(!Thread.interrupted()) {
-        LiftOff rocket = rockets.take();
+        A01_LiftOff rocket = rockets.take();
         rocket.run(); // Use this thread
       }
     } catch(InterruptedException e) {
@@ -45,23 +45,23 @@ public class TestBlockingQueues {
     getkey();
   }
   static void
-  test(String msg, BlockingQueue<LiftOff> queue) {
+  test(String msg, BlockingQueue<A01_LiftOff> queue) {
     print(msg);
     LiftOffRunner runner = new LiftOffRunner(queue);
     Thread t = new Thread(runner);
     t.start();
     for(int i = 0; i < 5; i++)
-      runner.add(new LiftOff(5));
+      runner.add(new A01_LiftOff(5));
     getkey("Press 'Enter' (" + msg + ")");
     t.interrupt();
     print("Finished " + msg + " test");
   }
   public static void main(String[] args) {
     test("LinkedBlockingQueue", // Unlimited size
-      new LinkedBlockingQueue<LiftOff>());
+      new LinkedBlockingQueue<A01_LiftOff>());
     test("ArrayBlockingQueue", // Fixed size
-      new ArrayBlockingQueue<LiftOff>(3));
+      new ArrayBlockingQueue<A01_LiftOff>(3));
     test("SynchronousQueue", // Size of 1
-      new SynchronousQueue<LiftOff>());
+      new SynchronousQueue<A01_LiftOff>());
   }
 } ///:~

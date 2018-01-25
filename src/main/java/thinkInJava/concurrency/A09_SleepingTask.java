@@ -1,8 +1,9 @@
+package thinkInJava.concurrency;
 //: concurrency/SleepingTask.java
 // Calling sleep() to pause for a while.
 import java.util.concurrent.*;
 
-public class SleepingTask extends LiftOff {
+public class A09_SleepingTask extends A01_LiftOff {
   public void run() {
     try {
       while(countDown-- > 0) {
@@ -19,7 +20,7 @@ public class SleepingTask extends LiftOff {
   public static void main(String[] args) {
     ExecutorService exec = Executors.newCachedThreadPool();
     for(int i = 0; i < 5; i++)
-      exec.execute(new SleepingTask());
+      exec.execute(new A09_SleepingTask());
     exec.shutdown();
   }
 } /* Output:

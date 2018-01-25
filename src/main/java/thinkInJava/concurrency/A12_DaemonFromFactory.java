@@ -1,10 +1,17 @@
+package thinkInJava.concurrency;
 //: concurrency/DaemonFromFactory.java
 // Using a Thread Factory to create daemons.
 import java.util.concurrent.*;
 import net.mindview.util.*;
 import static net.mindview.util.Print.*;
 
-public class DaemonFromFactory implements Runnable {
+/*
+ * 
+ *  -- interrupted ÖÐ¶Ï
+ * 
+ */
+
+public class A12_DaemonFromFactory implements Runnable {
   public void run() {
     try {
       while(true) {
@@ -19,7 +26,7 @@ public class DaemonFromFactory implements Runnable {
     ExecutorService exec = Executors.newCachedThreadPool(
       new DaemonThreadFactory());
     for(int i = 0; i < 10; i++)
-      exec.execute(new DaemonFromFactory());
+      exec.execute(new A12_DaemonFromFactory());
     print("All daemons started");
     TimeUnit.MILLISECONDS.sleep(500); // Run for a while
   }

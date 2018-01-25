@@ -1,10 +1,16 @@
+package thinkInJava.concurrency;
 //: concurrency/MoreBasicThreads.java
 // Adding more threads.
 
-public class MoreBasicThreads {
+//更多的 线程 同时 启动
+
+// 线程即使 执行完毕，也仍会存在
+
+
+public class A04_MoreBasicThreads {
   public static void main(String[] args) {
     for(int i = 0; i < 5; i++)
-      new Thread(new LiftOff()).start();
+      new Thread(new A01_LiftOff()).start();
     System.out.println("Waiting for LiftOff");
   }
 } /* Output: (Sample)
